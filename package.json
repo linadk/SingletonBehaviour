@@ -1,0 +1,19 @@
+{
+  "name": "com.trigraphlabs.singletonbehaviour",
+  "displayName": "SingletonBehaviour",
+  "version": "0.1.0",
+  "description": "A tried and true Singleton MonoBehaviour that's thread safe and unit tested.",
+  "author": {
+    "name": "Lina Adkins",
+    "url": "https://trigraphlabs.com"
+  },
+  "keywords": [
+    "Singleton",
+    "Thread-safe",
+    "Tested"
+  ],
+  "type": "template",
+  "dependencies": {
+    "com.unity.test-framework": "1.1.20"
+  }
+}
