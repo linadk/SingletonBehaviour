@@ -20,13 +20,13 @@ jobs:
           lfs: true
     
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
           path: Library
           key: Library
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
+        uses: webbertakken/unity-test-runner@v1.7
         with:
           unityVersion: 2019.4.14f1
