@@ -36,11 +36,13 @@ jobs:
 
       # Test
       - name: Run tests
+        id: tests
         uses: webbertakken/unity-test-runner@v1.6
         with:
           projectPath: ${{matrix.projectPath}}
           unityVersion: ${{matrix.unityVersion}}
           testMode: ${{matrix.testMode}}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
         env:
           UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
 
