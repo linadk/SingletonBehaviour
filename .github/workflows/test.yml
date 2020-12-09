@@ -44,9 +44,8 @@ jobs:
         env:
           UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
 
-      # Upload Artifacts
-      - uses: actions/upload-artifact@v1
-      name: Upload Artifacts
-      with:
-        path: ${{ steps.tests.outputs.artifactsPath }}
-        
+      # Upload Test Artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          path: ${{steps.tests.outputs.artifactsPath}}
