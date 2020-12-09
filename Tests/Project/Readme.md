@@ -1,0 +1,1 @@
+This folder stores a basic unity project so that the test runners aren't confused by the lack of unity project files. Ignored by NPM.

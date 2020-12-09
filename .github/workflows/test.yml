@@ -15,9 +15,9 @@ jobs:
         unityVersion:
           - 2019.4.14f1
         include:
-          - unityVersion: 2019.4.14f1
-            projectPath: test-project-2019.4
-            licenseSecret: UNITY_LICENSE
+          - unityVersion: [ 2019.4.14f1 ]
+            projectPath: [ Tests/Project ]
+            testMode: [ playmode ] # editmode
     steps:
     
       # Checkout
@@ -31,15 +31,16 @@ jobs:
         with:
           path: ${{ matrix.projectPath }}/Library
           key: Library-${{matrix.projectPath}}
-        env:
-          UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
+          restore-keys: |
+            Library-
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
+        uses: webbertakken/unity-test-runner@v1.6
         with:
-          projectPath: ${{matrix.projectPath }}
+          projectPath: ${{matrix.projectPath}}
           unityVersion: ${{matrix.unityVersion}}
+          testMode: ${{matrix.testMode}}
         env:
           UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
         
