@@ -15,9 +15,9 @@ jobs:
         unityVersion:
           - 2019.4.14f1
         include:
-          - unityVersion: [ 2019.4.14f1 ]
-            projectPath: [ Tests/Project ]
-            testMode: [ playmode ] # editmode
+          - unityVersion: 2019.4.14f1 
+            projectPath: Tests/Project 
+            testMode: playmode # editmode
     steps:
     
       # Checkout
