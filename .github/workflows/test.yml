@@ -46,6 +46,7 @@ jobs:
 
       # Upload Test Artifacts
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
+          name: test-artifact
           path: ${{steps.tests.outputs.artifactsPath}}
