@@ -1,4 +1,6 @@
 name: 'Unity Builds'
+on: push
+
 description: 'Runs unity builds and tests'
 author: 'Nick Cipollo'
 inputs:
