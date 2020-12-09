@@ -4,13 +4,20 @@ on:
   pull_request: {}
   push: { branches: [master] }
 
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
 jobs:
   build:
     name: Test project
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        unityVersion:
+          - 2019.4.14f1
+        include:
+          - unityVersion: 2019.4.14f1
+            projectPath: test-project
+            licenseSecret: UNITY_LICENSE
     steps:
     
       # Checkout
@@ -20,13 +27,19 @@ jobs:
           lfs: true
     
       # Cache
-      - uses: actions/cache@v2
+      - uses: actions/cache@v1.1.0
         with:
-          path: Library
-          key: Library
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{matrix.projectPath}}
+        env:
+          UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.7
+        uses: webbertakken/unity-test-runner@v1.3
         with:
-          unityVersion: 2019.4.14f1
+          projectPath: ${{matrix.projectPath }}
+          unityVersion: ${{matrix.unityVersion}}
+        env:
+          UNITY_LICENSE: ${{secrets.UNITY_LICENSE }}
+        
